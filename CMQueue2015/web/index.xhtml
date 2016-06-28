@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CMQueue 2015</title>
+    </h:head>
+    <h:body onload="PF('dlgDesb').show();">
+        
+        <h:form id="myform">
+        
+        <p:growl id="messages" showDetail="true" autoUpdate="true" life="3000" />
+        
+        <center>
+            Commands : <p:inputText id="cmd" value="#{queueBean.comando}"/> 
+            <p:commandButton value="Ok" actionListener="#{queueBean.serverManager()}" update="messages"/><br/><br/>
+            <p:commandButton value="Fechar" actionListener="#{queueBean.windowManager()}" update="cmd"/>    
+        </center>
+        
+        
+        
+        <p:dialog header="Sistema de controlo" widgetVar="dlgDesb" modal="true" height="100" closable="false" closeOnEscape="false" resizable="false">
+            <h:outputText value="Sistema protegido! Digite a password para desbloquear." /><br/>
+            <p:password id="feedback" value="#{queueBean.pass}" /><p:commandButton value="Ok" actionListener="#{queueBean.verifyPass()}" /><br/> 
+       </p:dialog>
+        
+        </h:form>
+        
+    </h:body>
+</html>
+
